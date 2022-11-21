@@ -1,0 +1,14 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.form {
+  width: 200px;
+  margin: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid gray;
+}
