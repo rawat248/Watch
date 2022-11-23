@@ -4,8 +4,7 @@ import "./Category.css";
 const Form = () => {
   return (
     <form className="form">
-        <input type="text" name="search" placeholder="Search..."></input>
-
+      <input type="text" name="search" placeholder="Search..."></input>
     </form>
   );
 };

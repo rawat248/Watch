@@ -4,7 +4,7 @@ import Category from "./components/Category";
 const App = () => {
   return (
     <div>
-      <Category/>
+      <Category />
     </div>
   );
 };

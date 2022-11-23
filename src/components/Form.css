@@ -2,14 +2,19 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-
 .form {
   width: 200px;
-  margin: 50px;
+  margin: 50px 0px;
 }
 
 input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid gray;
+}
+
+@media only screen and (max-width: 764px) and (min-width: 1029px) {
+  .form {
+    width: 150px;
+  }
 }
