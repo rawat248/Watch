@@ -1,0 +1,32 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.form {
+  width: 200px;
+  margin: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid gray;
+}
+.card-img-top {
+  width: 150px;
+  height: 250px;
+  object-fit: contain;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+  padding: 5px;
+  margin-left: 48px;
+  color: #555;
+}
+.btn{
+    display:block;
+    margin-left: 40px;
+}
