@@ -3,6 +3,22 @@ h1 {
   color: #555;
   font-weight: 300;
 }
-.head {
-  margin: 10px 40px;
+.nav {
+  margin: 50px;
+  width: 30%;
+} 
+.link {
+  display: flex; 
+  flex-direction: column;
+} 
+a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 5px;
+  color: black;
+  
 }
+a .active{
+  font-weight: 500;
+} 
