@@ -1,23 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Category.css";
 import Form from "./Form";
-import { Menu } from "../components/Item";
+import { Menu } from "../context/Data";
 import Filter from "./Filter";
+import Item from "./Item";
 
 const Category = () => {
   const [data, setData] = useState(Menu);
+  const [selectedPrice, setSelectedPrice] = useState([1705, 11995]);
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleChangePrice = (event, value) => {
+    setSelectedPrice(value);
+  };
   const filter = (catItem) => {
     const result = Menu.filter((curData) => {
       return curData.cat === catItem;
     });
     setData(result);
   };
+
+  const applyFilters = () => {
+    let updatedList = Menu;
+
+    const minPrice = selectedPrice[0];
+    const maxPrice = selectedPrice[1];
+    updatedList = updatedList.filter(
+      (item) => item.price >= minPrice && item.price <= maxPrice
+    );
+
+    if (inputSearch) {
+      updatedList = updatedList.filter(
+        (item) =>
+          item.name.toLowerCase().search(inputSearch.toLowerCase().trim()) !==
+          -1
+      );
+    }
+
+    setData(updatedList);
+  };
+  useEffect(() => {
+    applyFilters();
+  }, [selectedPrice, inputSearch]);
+
   return (
     <div>
       <div className="container-fluid ">
         <div className="row mt-5 mx-1">
           <div className="col-md-3 col-sm-12">
-            <Form />
+            <Form
+              value={inputSearch}
+              changeInput={(e) => setInputSearch(e.target.value)}
+            />
             <h1 className="head">Categories</h1>
             <button className="btn" onClick={() => setData(Menu)}>
               All
@@ -34,37 +68,14 @@ const Category = () => {
             <button className="btn" onClick={() => filter("Casual")}>
               Casual
             </button>
+
             <h1>Maximum Price</h1>
-            <Filter />
+            <Filter
+              changePrice={handleChangePrice}
+              selectedPrice={selectedPrice}
+            />
           </div>
-          <div className="col-md-9 col-sm-12">
-            <div className="row">
-              {data.map((data) => {
-                return (
-                  <>
-                    <div
-                      className="col-md-6 col-sm-12 col-lg-4 mb-4"
-                      key={data.id}
-                    >
-                      <div className="card">
-                        <div className="cards">
-                          <img
-                            src={data.img}
-                            className="card-img-top"
-                            alt="..."
-                          ></img>
-                        </div>
-                        <div className="card-body">
-                          <p className="card-text">{data.name}</p>
-                          <span className="price">Rs.{data.price}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          </div>
+          <Item list={data} />
         </div>
       </div>
     </div>
