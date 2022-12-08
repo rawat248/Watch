@@ -1,10 +1,13 @@
 import React from "react";
 import Category from "./components/Category";
+import Context from "./context/Context";
 
 const App = () => {
   return (
     <div>
-      <Category/>
+      <Context>
+        <Category />
+      </Context>
     </div>
   );
 };

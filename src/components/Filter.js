@@ -1,27 +1,24 @@
-import React from "react";
-import { Slider } from "@mui/material";
+import React, { useContext } from "react";
+
 import "./Filter.css";
-// import { Menu } from "./Item";
+import { dataContext } from "../context/Context";
 
 const Filter = () => {
-  // const [price, setPrice] = useState(1195);
-
-  // const handleInput = (e) => {
-  //   setPrice(e.target.value);
-  // };
-
-  // const Data = { Menu };
-  // console.log(Data, "menu");
+  const { handleChangePrice, selectedPrice, minValue, maxValue } =
+    useContext(dataContext);
   return (
     <div className="App">
-      <Slider/>
-      {/* <input type="range" onInput={ handleInput } />
-      <h1>Price: { price }</h1>
-      <div>
-      { Data.filter(Item => { return Item.price > parseInt(price, 10); }).map(hotel => {
-        return <p key={hotel.name}>{ hotel.name } | { hotel.price } &euro; </p>;
-      })}
-      </div> */}
+      <div className="box">
+        <input
+          type="range"
+          value={selectedPrice}
+          onChange={handleChangePrice}
+          min={minValue}
+          max={maxValue}
+          name="price"
+        ></input>
+      </div>
+      <div className="value">Rs.{selectedPrice}</div>
     </div>
   );
 };
