@@ -1,24 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Category.css";
-import PropTypes from "prop-types";
+import "./Form.css";
+import { dataContext } from "../context/Context";
 
-const Form = ({ value, changeInput }) => {
+const Form = () => {
+  const { inputSearch, changeInput } = useContext(dataContext);
   return (
-    <form className="form">
-      <input
-        type="text"
-        name="text"
-        placeholder="Search..."
-        onChange={changeInput}
-        value={value}
-      ></input>
-    </form>
+    <div className="mainContainer">
+      <form className="form">
+        <input
+          type="text"
+          name="text"
+          placeholder="Search..."
+          onChange={changeInput}
+          value={inputSearch}
+          className="input"
+        ></input>
+      </form>
+    </div>
   );
 };
-Form.propTypes = {
-  value: PropTypes.string.isRequired
-};
-Form.propTypes = {
-  changeInput: PropTypes.string.isRequired
-};
+
 export default Form;

@@ -4,11 +4,11 @@ body {
 
 .form {
   width: 200px;
-  margin: 50px 0px;
+  margin-left: 15px;
 }
 
 input {
-  width: 80%;
+  width: 100%;
   padding: 10px;
   border: 1px solid gray;
 }

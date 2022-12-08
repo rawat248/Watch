@@ -1,27 +1,26 @@
-import React from "react";
-import { Slider } from "@mui/material";
-import "./Filter.css";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 
-const Filter = ({ changePrice, selectedPrice }) => {
+import "./Filter.css";
+import { dataContext } from "../context/Context";
+
+const Filter = () => {
+  const { handleChangePrice, selectedPrice, minValue, maxValue } =
+    useContext(dataContext);
   return (
     <div className="App">
-      <Slider
-        value={selectedPrice}
-        onChange={changePrice}
-        valueLabelDisplay="on"
-        min={1705}
-        max={11995}
-        step={10}
-      />
+      <div className="box">
+        <input
+          type="range"
+          value={selectedPrice}
+          onChange={handleChangePrice}
+          min={minValue}
+          max={maxValue}
+          name="price"
+        ></input>
+      </div>
+      <div className="value">Rs.{selectedPrice}</div>
     </div>
   );
-};
-Filter.propTypes = {
-  changePrice: PropTypes.string.isRequired
-};
-Filter.propTypes = {
-  selectedPrice: PropTypes.string.isRequired
 };
 
 export default Filter;
